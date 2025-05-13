@@ -23,4 +23,7 @@ public class Emp {
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
     private LocalDate entryDate;
+
+    //封装部门名称
+    private String deptName;
 }
