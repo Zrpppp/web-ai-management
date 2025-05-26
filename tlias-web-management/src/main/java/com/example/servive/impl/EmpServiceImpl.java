@@ -73,4 +73,12 @@ public class EmpServiceImpl implements EmpService {
         //删除员工工作经历
         empExprMapper.deleteByEmpIds(ids);
     }
+
+    /**
+     * 根据id获取员工信息
+     */
+    @Override
+    public Emp getInfo(Integer id) {
+        return empMapper.getById(id);
+    }
 }

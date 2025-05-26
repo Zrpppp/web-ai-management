@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -51,5 +50,15 @@ public class EmpController {
         log.info("批量删除员工，员工id：{}", ids);
         empService.delete(ids);
         return Result.success();
+    }
+
+    /**
+     * 根据id查询员工信息
+     */
+    @GetMapping("/{id}")
+    public Result getInfo(@PathVariable Integer id) {
+        log.info("根据id查询员工信息，员工id：{}", id);
+        Emp emp = empService.getInfo(id);
+        return Result.success(emp);
     }
 }
