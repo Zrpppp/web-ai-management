@@ -18,6 +18,9 @@ import java.util.List;
 @Service
 public class EmpServiceImpl implements EmpService {
 
+    /**
+     * 文件上传
+     */
     @Autowired
     private EmpMapper empMapper;
     @Autowired
@@ -57,5 +60,17 @@ public class EmpServiceImpl implements EmpService {
             EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "添加员工信息:" + emp);
             empLogService.insertLog(empLog);
         }
+    }
+
+    /**
+     * 批量删除员工
+     */
+    @Transactional(rollbackFor = {Exception.class})
+    @Override
+    public void delete(List<Integer> ids) {
+        //删除员工基本信息
+        empMapper.deleteByIds(ids);
+        //删除员工工作经历
+        empExprMapper.deleteByEmpIds(ids);
     }
 }

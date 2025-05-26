@@ -4,6 +4,8 @@ import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
 import com.example.pojo.pageResult;
 
+import java.util.List;
+
 public interface EmpService {
     /**
      * 分页查询
@@ -14,4 +16,9 @@ public interface EmpService {
      * 新增员工
      */
     void save(Emp emp);
+
+    /**
+     * 员工删除
+     */
+    void delete(List<Integer> ids);
 }

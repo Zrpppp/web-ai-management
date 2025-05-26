@@ -21,7 +21,6 @@ public interface EmpMapper {
     /**
      * 分页查询
      */
-//    @Select("select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id order by e.update_time desc limit #{start},#{pageSize}")
     public List<Emp> list(EmpQueryParam empQueryParam);
 
     /**
@@ -31,4 +30,9 @@ public interface EmpMapper {
     @Insert("insert into emp(username,name,gender,image,job,dept_id,phone,salary,entry_date,create_time,update_time) " +
             "values(#{username},#{name},#{gender},#{image},#{job},#{deptId},#{phone},#{salary},#{entryDate},#{createTime},#{updateTime})")
     void insert(Emp emp);
+
+    /**
+     * 批量删除员工
+     */
+    void deleteByIds(List<Integer> ids);
 }
