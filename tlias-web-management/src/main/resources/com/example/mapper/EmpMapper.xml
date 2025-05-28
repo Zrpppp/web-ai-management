@@ -112,4 +112,26 @@
         from emp e left join emp_expr ee on ee.emp_id = e.id
         where e.id = #{id}
     </select>
+
+    <!--  查询员工职位人数  -->
+    <select id="countEmpJobData" resultType="java.util.Map">
+        select
+            (case when job = 1 then '班主任'
+                  when job = 2 then '讲师'
+                  when job = 3 then '学工主管'
+                  when job = 4 then '校验主管'
+                  when job = 5 then '咨询师'
+                  else '其他职位' end
+            )pos,
+            count(*) num
+        from emp group by job order by num;
+    </select>
+
+    <!--  统计员工性别人数  -->
+    <select id="countEmpGenderData" resultType="java.util.Map">
+        select if(gender = 1, '男', '女') label,
+               count(*) value
+        from emp
+        group by gender;
+    </select>
 </mapper>
