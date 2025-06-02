@@ -8,6 +8,15 @@
          insert into clazz(name, room, begin_date, end_date, master_id, subject, create_time, update_time)
         values (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject}, #{createTime}, #{updateTime})
     </insert>
+
+    <!--  批量删除班级  -->
+    <delete id="deleteByIds">
+         delete from clazz where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
     <!--  分页条件查询  -->
     <select id="list" resultType="com.example.pojo.Clazz">
         select c.*, e.name masterName from clazz c left join emp e on c.master_id = e.id

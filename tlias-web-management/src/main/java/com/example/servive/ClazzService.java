@@ -5,6 +5,8 @@ import com.example.pojo.ClazzQueryParam;
 import com.example.pojo.pageResult;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ClazzService {
     /**
@@ -17,4 +19,9 @@ public interface ClazzService {
      * @param clazz
      */
     void save(Clazz clazz);
+
+    /**
+     * 批量删除
+     */
+    void delete(List<Integer> ids);
 }

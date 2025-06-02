@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Slf4j
 @RestController
@@ -19,7 +21,7 @@ public class ClazzController {
      */
     @GetMapping
      public Result list(ClazzQueryParam clazzQueryParam) {
-        log.info("查询所有");
+        log.info("查询所有{}",clazzQueryParam);
         pageResult<Clazz> pageResult = clazzService.page(clazzQueryParam);
         return Result.success(pageResult);
     }
@@ -29,8 +31,18 @@ public class ClazzController {
      */
     @PostMapping
      public Result save(@RequestBody Clazz clazz) {
-        log.info("添加班级");
+        log.info("添加班级{}",clazz);
         clazzService.save(clazz);
+        return Result.success();
+    }
+
+    /**
+     *  批量删除班级
+     */
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids) {
+        log.info("删除班级{}",ids);
+        clazzService.delete(ids);
         return Result.success();
     }
 }

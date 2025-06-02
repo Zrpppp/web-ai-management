@@ -18,4 +18,9 @@ public interface ClazzMapper {
      *  添加班级
      */
     void add(Clazz clazz);
+
+    /**
+     *  批量删除班级
+     */
+    void deleteByIds(List<Integer> ids);
 }

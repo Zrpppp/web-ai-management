@@ -39,6 +39,15 @@ public class ClazzServiceImpl implements ClazzService {
     public void save(Clazz clazz) {
         clazz.setCreateTime(LocalDateTime.now());
         clazz.setUpdateTime(LocalDateTime.now());
-         clazzMapper.add(clazz);
+        clazzMapper.add(clazz);
+    }
+
+    /**
+     * 批量删除
+     * @param ids
+     */
+    @Override
+    public void delete(List<Integer> ids) {
+        clazzMapper.deleteByIds(ids);
     }
 }
