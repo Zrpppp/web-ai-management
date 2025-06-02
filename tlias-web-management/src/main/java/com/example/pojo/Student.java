@@ -27,5 +27,5 @@ public class Student {
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 
-    private Clazz clazzName;
+    private String clazzName;
 }
