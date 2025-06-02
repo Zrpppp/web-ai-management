@@ -33,4 +33,10 @@ public interface ClazzMapper {
      *  修改班级
      */
     void updateById(Clazz clazz);
+
+    /**
+     *  查询所有班级
+     */
+
+    List<Clazz> findAll();
 }

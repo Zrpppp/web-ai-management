@@ -17,6 +17,16 @@ public class ClazzController {
     private ClazzService clazzService;
 
     /**
+     * 查询所有班级
+     */
+     @GetMapping("/list")
+      public Result list() {
+        log.info("查询所有");
+        List<Clazz> clazzList = clazzService.list();
+        return Result.success(clazzList);
+    }
+
+    /**
      *  分页查询
      */
     @GetMapping

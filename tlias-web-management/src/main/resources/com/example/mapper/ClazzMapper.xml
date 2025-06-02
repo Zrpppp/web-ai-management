@@ -71,8 +71,15 @@
         </where>
         order by e.update_time desc
     </select>
+
+    <!--  根据id查询  -->
     <select id="getById" resultType="com.example.pojo.Clazz">
         select c.*, e.name masterName from clazz c left join emp e on c.master_id = e.id
         where c.id = #{id}
+    </select>
+
+    <!--  查询所有  -->
+    <select id="findAll" resultType="com.example.pojo.Clazz">
+         select c.*, e.name masterName from clazz c left join emp e on c.master_id = e.id
     </select>
 </mapper>
