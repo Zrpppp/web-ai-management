@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,5 +30,15 @@ public class ClazzServiceImpl implements ClazzService {
         Page<Clazz> p = (Page<Clazz>) clazzList;
 
         return new pageResult<Clazz>(p.getTotal(), p.getResult());
+    }
+
+    /**
+     * 保存班级
+     */
+    @Override
+    public void save(Clazz clazz) {
+        clazz.setCreateTime(LocalDateTime.now());
+        clazz.setUpdateTime(LocalDateTime.now());
+         clazzMapper.add(clazz);
     }
 }

@@ -11,4 +11,10 @@ public interface ClazzService {
      * 分页查询
      */
     pageResult<Clazz> page(ClazzQueryParam clazzQueryParam);
+
+    /**
+     * 保存
+     * @param clazz
+     */
+    void save(Clazz clazz);
 }

@@ -4,9 +4,7 @@ import com.example.pojo.*;
 import com.example.servive.ClazzService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @Slf4j
@@ -24,5 +22,15 @@ public class ClazzController {
         log.info("查询所有");
         pageResult<Clazz> pageResult = clazzService.page(clazzQueryParam);
         return Result.success(pageResult);
+    }
+
+    /**
+     *  添加班级
+     */
+    @PostMapping
+     public Result save(@RequestBody Clazz clazz) {
+        log.info("添加班级");
+        clazzService.save(clazz);
+        return Result.success();
     }
 }

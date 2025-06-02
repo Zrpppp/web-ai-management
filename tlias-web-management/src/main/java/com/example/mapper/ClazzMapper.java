@@ -13,4 +13,9 @@ public interface ClazzMapper {
      *  分页查询查询
      */
     public List<Clazz> list(ClazzQueryParam clazzQueryParam);
+
+    /**
+     *  添加班级
+     */
+    void add(Clazz clazz);
 }
