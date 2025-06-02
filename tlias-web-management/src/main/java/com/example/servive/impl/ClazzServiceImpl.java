@@ -44,6 +44,7 @@ public class ClazzServiceImpl implements ClazzService {
 
     /**
      * 批量删除
+     *
      * @param ids
      */
     @Override
@@ -56,6 +57,15 @@ public class ClazzServiceImpl implements ClazzService {
      */
     @Override
     public Clazz getInfo(Integer id) {
-        return  clazzMapper.getById(id);
+        return clazzMapper.getById(id);
+    }
+
+    /**
+     * 修改班级信息
+     */
+    @Override
+    public void update(Clazz clazz) {
+        clazz.setUpdateTime(LocalDateTime.now());
+        clazzMapper.updateById(clazz);
     }
 }

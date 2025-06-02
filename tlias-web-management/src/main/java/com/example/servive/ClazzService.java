@@ -29,4 +29,9 @@ public interface ClazzService {
      * 根据id查询
      */
     Clazz getInfo(Integer id);
+
+    /**
+     * 修改
+     */
+    void update(Clazz clazz);
 }
