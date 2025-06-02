@@ -14,8 +14,8 @@ public class Clazz {
     private Integer id;
     private String name;
     private String room;
-    private LocalDate beginData;
-    private LocalDate endData;
+    private LocalDate beginDate;
+    private LocalDate endDate;
     private Integer masterId;
     private Integer subject;
     private LocalDateTime createTime;
