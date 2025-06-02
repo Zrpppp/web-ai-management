@@ -24,4 +24,9 @@ public interface ClazzService {
      * 批量删除
      */
     void delete(List<Integer> ids);
+
+    /**
+     * 根据id查询
+     */
+    Clazz getInfo(Integer id);
 }

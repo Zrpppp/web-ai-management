@@ -45,4 +45,14 @@ public class ClazzController {
         clazzService.delete(ids);
         return Result.success();
     }
+
+    /**
+     * 根据id查询班级
+     */
+     @GetMapping("/{id}")
+     public Result getInfo(@PathVariable Integer id) {
+          log.info("查询班级{}",id);
+           Clazz clazz = clazzService.getInfo(id);
+           return Result.success(clazz);
+     }
 }

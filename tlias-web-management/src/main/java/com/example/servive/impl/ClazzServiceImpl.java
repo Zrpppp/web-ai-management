@@ -50,4 +50,12 @@ public class ClazzServiceImpl implements ClazzService {
     public void delete(List<Integer> ids) {
         clazzMapper.deleteByIds(ids);
     }
+
+    /**
+     * 根据id 查询班级信息
+     */
+    @Override
+    public Clazz getInfo(Integer id) {
+        return  clazzMapper.getById(id);
+    }
 }
