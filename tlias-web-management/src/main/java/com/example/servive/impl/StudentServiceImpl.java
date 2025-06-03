@@ -51,4 +51,12 @@ public class StudentServiceImpl implements StudentService {
         student.setUpdateTime(LocalDateTime.now());
         studentMapper.add(student);
     }
+
+    /**
+     * 批量删除
+     */
+    @Override
+    public void deleteByIds(List<Integer> ids) {
+        studentMapper.deleteByIds(ids);
+    }
 }

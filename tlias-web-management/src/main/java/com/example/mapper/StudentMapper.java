@@ -23,4 +23,9 @@ public interface StudentMapper {
      * 新增学生
      */
     void add(Student student);
+
+    /**
+     * 批量删除学生
+     */
+    void deleteByIds(List<Integer> ids);
 }

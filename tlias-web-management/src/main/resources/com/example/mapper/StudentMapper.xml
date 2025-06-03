@@ -8,6 +8,13 @@
         insert into student(name, no, gender, phone, id_card, is_college, address, graduation_date, degree, clazz_id, create_time, update_time)
         values (#{name}, #{no}, #{gender}, #{phone}, #{idCard}, #{isCollege}, #{address}, #{graduationDate},#{degree}, #{clazzId}, #{createTime}, #{updateTime})
     </insert>
+    <!-- 批量删除 -->
+    <delete id="deleteByIds">
+        delete from student where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
     <!--  查询所有  -->
     <select id="findAll" resultType="com.example.pojo.Student">

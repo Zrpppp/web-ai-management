@@ -23,4 +23,9 @@ public interface StudentService {
      * 新增学生
      */
     void save(Student student);
+
+    /**
+     * 删除学生
+     */
+    void deleteByIds(List<Integer> ids);
 }

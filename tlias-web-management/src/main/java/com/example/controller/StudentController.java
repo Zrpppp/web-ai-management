@@ -47,4 +47,14 @@ public class StudentController {
         studentService.save(student);
         return Result.success();
     }
+
+    /**
+     * 批量删除学生
+     */
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids) {
+        log.info("删除学生{}",ids);
+        studentService.deleteByIds(ids);
+        return Result.success();
+    }
 }
