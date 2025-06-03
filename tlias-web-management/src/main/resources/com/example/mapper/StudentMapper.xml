@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.StudentMapper">
+    <!--  新增学生  -->
+    <insert id="add">
+        insert into student(name, no, gender, phone, id_card, is_college, address, graduation_date, degree, clazz_id, create_time, update_time)
+        values (#{name}, #{no}, #{gender}, #{phone}, #{idCard}, #{isCollege}, #{address}, #{graduationDate},#{degree}, #{clazzId}, #{createTime}, #{updateTime})
+    </insert>
+
     <!--  查询所有  -->
     <select id="findAll" resultType="com.example.pojo.Student">
         select s.*, c.name clazzName
@@ -39,7 +45,7 @@
                 and s.degree = #{degree}
             </if>
             <if test="beginData != null and endData != null">
-                and e.graduationData between #{beginData} and #{endData}
+                and e.graduationDate between #{beginData} and #{endData}
             </if>
             <if test="clazzId != null">
                 and s.clazz_id = #{clazzId}

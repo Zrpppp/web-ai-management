@@ -20,7 +20,7 @@ public class Student {
     private Integer isCollege;
     private String address;
     private Integer degree;
-    private LocalDate graduationData;
+    private LocalDate graduationDate;
     private Integer clazzId;
     private short violationCount;
     private short violationScore;

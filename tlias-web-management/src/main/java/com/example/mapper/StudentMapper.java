@@ -18,4 +18,9 @@ public interface StudentMapper {
      *  分页查询
      */
     List<Student> list(StudentQueryParam studentQueryParam);
+
+    /**
+     * 新增学生
+     */
+    void add(Student student);
 }

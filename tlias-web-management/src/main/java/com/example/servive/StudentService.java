@@ -18,4 +18,9 @@ public interface StudentService {
      * 分页查询
      */
     pageResult<Student> page(StudentQueryParam studentQueryParam);
+
+    /**
+     * 新增学生
+     */
+    void save(Student student);
 }
