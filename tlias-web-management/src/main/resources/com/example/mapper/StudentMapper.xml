@@ -8,6 +8,57 @@
         insert into student(name, no, gender, phone, id_card, is_college, address, graduation_date, degree, clazz_id, create_time, update_time)
         values (#{name}, #{no}, #{gender}, #{phone}, #{idCard}, #{isCollege}, #{address}, #{graduationDate},#{degree}, #{clazzId}, #{createTime}, #{updateTime})
     </insert>
+
+    <!--  更新学生  -->
+    <update id="update">
+        update student
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="no != null and no != ''">
+                no = #{no},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="idCard != null and idCard != ''">
+                id_card = #{idCard},
+            </if>
+            <if test="isCollege != null">
+                is_college = #{isCollege},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="graduationDate != null">
+                graduation_date = #{graduationDate},
+            </if>
+            <if test="degree != null">
+                degree = #{degree},
+            </if>
+            <if test="clazzId != null">
+                clazz_id = #{clazzId},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="violationCount != null">
+                violation_count = #{violationCount},
+            </if>
+            <if test="violationScore != null">
+                violation_score = #{violationScore},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
     <!-- 批量删除 -->
     <delete id="deleteByIds">
         delete from student where id in
@@ -59,5 +110,13 @@
             </if>
         </where>
         order by s.update_time desc
+    </select>
+
+    <!--  根据id查询学生  -->
+    <select id="getInfoById" resultType="com.example.pojo.Student">
+        select s.*, c.name clazzName
+        from student s
+                 left join clazz c on s.clazz_id = c.id
+        where s.id = #{id}
     </select>
 </mapper>

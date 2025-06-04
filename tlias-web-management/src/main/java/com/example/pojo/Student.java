@@ -22,8 +22,8 @@ public class Student {
     private Integer degree;
     private LocalDate graduationDate;
     private Integer clazzId;
-    private short violationCount;
-    private short violationScore;
+    private Integer violationCount = 0;
+    private Integer violationScore = 0;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 

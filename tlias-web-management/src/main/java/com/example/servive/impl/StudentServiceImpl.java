@@ -10,6 +10,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -58,5 +59,33 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void deleteByIds(List<Integer> ids) {
         studentMapper.deleteByIds(ids);
+    }
+
+    /**
+     * 根据id查询学生信息
+     */
+    @Override
+    public Student getInfo(Integer id) {
+       return studentMapper.getInfoById(id);
+    }
+
+    /**
+     * 修改学生信息
+     */
+    @Override
+    public void update(Student student) {
+        student.setUpdateTime(LocalDateTime.now());
+        studentMapper.update(student);
+    }
+
+    /**
+     * 扣分
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void violation(Student student) {
+        student.setUpdateTime(LocalDateTime.now());
+        student.setViolationScore(student.getViolationCount() * 2);
+        studentMapper.update(student);
     }
 }

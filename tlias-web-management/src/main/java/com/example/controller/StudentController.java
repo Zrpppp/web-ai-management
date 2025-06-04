@@ -57,4 +57,34 @@ public class StudentController {
         studentService.deleteByIds(ids);
         return Result.success();
     }
+
+    /**
+     * 根据id查询学生
+     */
+    @GetMapping("/{id}")
+    public Result getInfo(@PathVariable Integer id) {
+        log.info("查询学生{}",id);
+        Student student = studentService.getInfo(id);
+        return Result.success(student);
+    }
+
+    /**
+     * 修改学生信息
+     */
+    @PutMapping
+    public Result update(@RequestBody Student student) {
+        log.info("修改学生{}",student);
+        studentService.update(student);
+        return Result.success();
+    }
+
+    /**
+     * 违纪处理
+     */
+    @PostMapping("/violation")
+    public Result violation(@RequestBody Student student) {
+        log.info("违纪处理{}",student);
+        studentService.violation(student);
+        return Result.success();
+    }
 }

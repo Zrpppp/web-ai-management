@@ -28,4 +28,19 @@ public interface StudentService {
      * 删除学生
      */
     void deleteByIds(List<Integer> ids);
+
+    /**
+     * 根据id查询学生
+     */
+    Student getInfo(Integer id);
+
+    /**
+     * 修改学生
+     */
+    void update(Student student);
+
+    /**
+     * 违规处理
+     */
+    void violation(Student student);
 }
