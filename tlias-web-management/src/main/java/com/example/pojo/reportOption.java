@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class jobOption {
-    private List jobList; //职位列表
+public class reportOption {
+    private List labelList;
     private List dataList; //数据列表
 }

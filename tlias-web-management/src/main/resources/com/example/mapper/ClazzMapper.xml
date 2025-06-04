@@ -82,4 +82,10 @@
     <select id="findAll" resultType="com.example.pojo.Clazz">
          select c.*, e.name masterName from clazz c left join emp e on c.master_id = e.id
     </select>
+
+    <!-- 统计班级人数   -->
+    <select id="countClazzData" resultType="java.util.Map">
+        select c.name clazzName, count(s.id) clazzCount from clazz c left join student s on c.id = s.clazz_id
+        group by c.name
+    </select>
 </mapper>

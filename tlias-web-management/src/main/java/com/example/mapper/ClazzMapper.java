@@ -5,6 +5,7 @@ import com.example.pojo.ClazzQueryParam;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ClazzMapper {
@@ -39,4 +40,9 @@ public interface ClazzMapper {
      */
 
     List<Clazz> findAll();
+
+    /**
+     *  统计班级数据
+     */
+    List<Map<String, Object>> countClazzData();
 }
