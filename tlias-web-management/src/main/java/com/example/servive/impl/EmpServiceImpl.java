@@ -104,4 +104,16 @@ public class EmpServiceImpl implements EmpService {
             empExprMapper.insertBatch(exprList);
         }
     }
+
+    /**
+     * 登录
+     */
+    @Override
+    public LoginInfo login(Emp emp) {
+        Emp e = empMapper.selectByUsernameAndPassword(emp);
+        if (e != null){
+            return new LoginInfo(e.getId(), e.getUsername(), e.getName(),"");
+        }
+        return null;
+    }
 }
