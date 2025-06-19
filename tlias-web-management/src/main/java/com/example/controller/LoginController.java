@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.Log;
 import com.example.pojo.Emp;
 import com.example.pojo.LoginInfo;
 import com.example.pojo.Result;
@@ -23,6 +24,7 @@ public class LoginController {
     /**
      * 登录
      */
+    @Log
     @PostMapping("/login")
     public Result login(@RequestBody Emp emp) {
         LoginInfo loginInfo = empService.login(emp);

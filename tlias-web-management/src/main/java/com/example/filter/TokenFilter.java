@@ -1,6 +1,8 @@
 package com.example.filter;
 
+import com.example.utils.CurrentHolder;
 import com.example.utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 
 @Slf4j
-//@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = "/*")
 public class TokenFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -36,7 +38,13 @@ public class TokenFilter implements Filter {
 
         //校验令牌
         try {
-            JwtUtils.parseJWT(token);
+            Claims claims = JwtUtils.parseJWT(token);
+
+            //获取员工id存入ThreadLocal
+            Integer empId = Integer.valueOf(claims.get("id").toString());
+            CurrentHolder.setCurrentId(empId);
+            log.info("当前员工id为：{}",empId);
+
         }catch (Exception e){
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
@@ -44,5 +52,8 @@ public class TokenFilter implements Filter {
 
         //放行
         filterChain.doFilter(servletRequest, servletResponse);
+
+        //删除ThreadLocal中的数据
+        CurrentHolder.remove();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.Log;
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
 import com.example.pojo.Result;
@@ -35,6 +36,7 @@ public class EmpController {
     /**
      * 保存员工
      */
+    @Log
     @PostMapping
     public Result save(@RequestBody Emp emp) {
         log.info("保存员工，员工信息：{}",emp);
@@ -45,6 +47,7 @@ public class EmpController {
      * 批量删除员工
      * public Result delete(@RequestParam Integer[] ids)
      */
+    @Log
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids){
         log.info("批量删除员工，员工id：{}", ids);
@@ -65,6 +68,7 @@ public class EmpController {
     /**
      * 更新员工信息
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Emp emp) {
         log.info("更新员工信息，员工信息：{}", emp);

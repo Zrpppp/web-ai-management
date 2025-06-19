@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.Log;
 import com.example.pojo.Result;
 import com.example.pojo.Student;
 import com.example.pojo.StudentQueryParam;
@@ -41,6 +42,7 @@ public class StudentController {
     /**
      * 新增学生
      */
+    @Log
     @PostMapping
       public Result save(@RequestBody Student student) {
         log.info("新增学生{}",student);
@@ -51,6 +53,7 @@ public class StudentController {
     /**
      * 批量删除学生
      */
+    @Log
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids) {
         log.info("删除学生{}",ids);
@@ -71,6 +74,7 @@ public class StudentController {
     /**
      * 修改学生信息
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Student student) {
         log.info("修改学生{}",student);
@@ -81,6 +85,7 @@ public class StudentController {
     /**
      * 违纪处理
      */
+    @Log
     @PostMapping("/violation")
     public Result violation(@RequestBody Student student) {
         log.info("违纪处理{}",student);

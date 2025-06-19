@@ -116,7 +116,6 @@ public class EmpServiceImpl implements EmpService {
             Map<String, Object> claims = new HashMap<>();
             claims.put("id", e.getId());
             claims.put("username", e.getUsername());
-
             String token = JwtUtils.generateJWT(claims);
             
             return new LoginInfo(e.getId(), e.getUsername(), e.getName(),token);
